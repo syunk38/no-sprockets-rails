@@ -1,5 +1,6 @@
 var webpack = require('webpack')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
+var AssetsPlugin = require('assets-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -8,7 +9,7 @@ module.exports = {
   },
   output: {
     path: __dirname + '/public',
-    filename: '[name].js'
+    filename: '[name]_[hash].js'
   },
   module: {
     loaders: [
@@ -18,6 +19,7 @@ module.exports = {
   },
   plugins: [
     //new webpack.optimize.UglifyJsPlugin(),  // minify
-    new ExtractTextPlugin("[name].css")
+    new ExtractTextPlugin("[name]_[hash].css"),
+    new AssetsPlugin({path: __dirname + '/app/views'})
   ]
 }
