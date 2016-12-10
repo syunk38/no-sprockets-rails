@@ -42,35 +42,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(1)
-	__webpack_require__(2)
-
-
-/***/ },
-/* 1 */
 /***/ function(module, exports) {
 
-	var say;
-
-	say = function(something) {
-	  alert(something);
-	};
-
-	say('Coffee');
-
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	var say = function(something) {
-	  alert(something);
-	}
-
-	say('Vanilla JavaScript');
-
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
