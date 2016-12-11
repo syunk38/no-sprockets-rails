@@ -3,12 +3,12 @@ class ApplicationController < ActionController::Base
   helper_method :script_for, :css_for
 
   def script_for(bundle)
-    "http://localhost:3000/#{manifest_json[bundle]['js']}" if Rails.env.production?
+    return "#{Rails.application.config.action_controller.asset_host}/#{manifest_json[bundle]['js']}" if Rails.env.production?
     "http://localhost:3000/#{bundle}.js"
   end
 
   def css_for(bundle)
-    "http://localhost:3000/#{manifest_json[bundle]['css']}" if Rails.env.production?
+    return "#{Rails.application.config.action_controller.asset_host}/#{manifest_json[bundle]['css']}" if Rails.env.production?
     "http://localhost:3000/#{bundle}.css"
   end
 
