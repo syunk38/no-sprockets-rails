@@ -7,6 +7,13 @@ machine:
     version: 6.9.1
 
 dependencies:
+  cache_directories:
+    - "vendor/bundle"
+    - "node_modules"
+  override:
+    - npm install
+    - npm run build
+    - bundle install --path vendor/bundle
 
 test:
   override:
@@ -15,5 +22,5 @@ test:
 deployment:
   production:
     branch: master
-    commands:
-      - npm run build
+    heroku:
+      appname: no-sprockets-rails
