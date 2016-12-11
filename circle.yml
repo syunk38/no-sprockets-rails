@@ -1,0 +1,19 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  ruby:
+    version: 2.3.0
+  node:
+    version: 6.9.1
+
+dependencies:
+
+test:
+  override:
+    - echo "Nothing to do here"
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - npm run build
