@@ -10,8 +10,11 @@ dependencies:
   cache_directories:
     - "vendor/bundle"
     - "node_modules"
+
   override:
+    - rm Gemfile.lock
     - npm install
+    - npm rebuild node-sass
     - npm run build
     - bundle install --path vendor/bundle
 
