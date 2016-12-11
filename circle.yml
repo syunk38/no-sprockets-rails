@@ -31,6 +31,8 @@ deployment:
       - npm install
       - npm rebuild node-sass
       - npm run build
+      - git branch --contains
+      - git checkout $CIRCLE_SHA1
       - git config --global user.email $HEROKU_EMAIL
       - git config --global user.name $HEROKU_USER_NAME
       - git add public/.
