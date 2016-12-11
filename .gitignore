@@ -21,4 +21,4 @@
 .byebug_history
 /node_modules
 /vendor/bundle
-/public/application*
+/public/application.*
