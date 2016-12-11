@@ -27,6 +27,6 @@ deployment:
       - npm install
       - npm rebuild node-sass
       - npm run build
-      - git push git@heroku.com:foo-bar-123.git $CIRCLE_SHA1:refs/heads/master
+      - git push git@heroku.com:no-sprockets-rails.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake db:migrate --app foo-bar-123:
           timeout: 400 # if your deploys take a long time
