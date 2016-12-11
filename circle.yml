@@ -18,6 +18,10 @@ dependencies:
 test:
   override:
     - echo "Nothing to do here"
+database:
+  override:
+    - echo "Nothing to do here"
+
 
 deployment:
   production:
@@ -27,6 +31,11 @@ deployment:
       - npm install
       - npm rebuild node-sass
       - npm run build
+      - git config --global user.email $HEROKU_EMAIL
+      - git config --global user.name $HEROKU_USER_NAME
+      - git add public/.
+      - git add app/views/webpack-assets.json
+      - git commit -m 'asset build'
       - git status
       - git push git@heroku.com:no-sprockets-rails.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake db:migrate --app no-sprockets-rails:
