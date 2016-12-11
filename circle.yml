@@ -31,13 +31,11 @@ deployment:
       - npm install
       - npm rebuild node-sass
       - npm run build
-      - git branch --contains
-      - git checkout $CIRCLE_SHA1
       - git config --global user.email $HEROKU_EMAIL
       - git config --global user.name $HEROKU_USER_NAME
       - git add public/.
       - git add app/views/webpack-assets.json
-      - git commit -m 'asset build'
+      - git commit --amend --no-edit
       - git status
       - git push git@heroku.com:no-sprockets-rails.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake db:migrate --app no-sprockets-rails:
