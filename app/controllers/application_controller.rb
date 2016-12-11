@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
   helper_method :script_for, :css_for
 
   def script_for(bundle)
-    manifest_json[bundle]['js']
+    "http://localhost:3000/#{manifest_json[bundle]['js']}"
   end
 
   def css_for(bundle)
-    manifest_json[bundle]['css']
+    "http://localhost:3000/#{manifest_json[bundle]['css']}"
   end
 
   private

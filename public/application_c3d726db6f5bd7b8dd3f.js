@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/Users/kurokishuntarou/repositories/project/no-sprockets-rails/public/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -42,6 +42,46 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(1);
+	module.exports = __webpack_require__(4);
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(2)
+	__webpack_require__(3)
+
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	var say;
+
+	say = function(something) {
+	  alert(something);
+	};
+
+	say('Coffee');
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	var say = function(something) {
+	  alert(something);
+	}
+
+	say('Vanilla JavaScript');
+
+
+/***/ },
+/* 4 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
