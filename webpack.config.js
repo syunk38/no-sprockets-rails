@@ -1,6 +1,17 @@
-var webpack = require('webpack')
-var ExtractTextPlugin = require("extract-text-webpack-plugin")
-var AssetsPlugin = require('assets-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const AssetsPlugin = require('assets-webpack-plugin')
+const webpack = require('webpack')
+
+const isDevMode = process.env.NODE_ENV === 'development'
+
+const fileName = isDevMode ? '[name]' : '[name]_[hash]'
+const devtool = isDevMode ? 'inline-source-map' : 'eval'
+const plugins = [new ExtractTextPlugin(`${fileName}.css`)]
+
+if(!isDevMode) {
+  plugins.push(new AssetsPlugin({path: __dirname + '/app/views', fullPath: false})) // manifest
+  plugins.push(new webpack.optimize.UglifyJsPlugin()) // minify
+}
 
 module.exports = {
   entry: {
@@ -12,17 +23,18 @@ module.exports = {
   output: {
     path: __dirname + '/public/',
     publicPath: __dirname + '/public/',
-    filename: '[name]_[hash].js'
+    filename: `${fileName}.js`
   },
   module: {
     loaders: [
-      { test: /\.coffee$/, loader: "coffee" },
-      { test: /\.scss/, loader: ExtractTextPlugin.extract("style-loader", "css!sass") }
+      { test: /\.coffee$/, loader: 'coffee' },
+      { test: /\.scss/, loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap') }
     ]
   },
-  plugins: [
-    //new webpack.optimize.UglifyJsPlugin(),  // minify
-    new ExtractTextPlugin("[name]_[hash].css"),
-    new AssetsPlugin({path: __dirname + '/app/views', fullPath: false})
-  ]
+  resolve: {
+    root: __dirname + '/assets/',
+    extensions: ['', '.js', '.js.coffee', '.sass']
+  },
+  devtool,
+  plugins
 }

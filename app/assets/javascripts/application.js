@@ -1,2 +1,2 @@
-require('./saySomethingInCoffee.js.coffee')
+require('./saySomethingInCoffee')
 require('./saySomethingInJs')

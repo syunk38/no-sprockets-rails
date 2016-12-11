@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "dev-watch": "NODE_ENV=development webpack -w"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.5.0",
