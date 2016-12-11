@@ -36,8 +36,6 @@ deployment:
       - git add public/.
       - git add app/views/webpack-assets.json
       - git commit --amend --no-edit
-      - export CIRCLE_SHA1=$(git rev-parse HEAD)
-      - echo $CIRCLE_SHA1
-      - git push git@heroku.com:no-sprockets-rails.git $CIRCLE_SHA1:refs/heads/master
+      - git push -f git@heroku.com:no-sprockets-rails.git master:refs/heads/master
       - heroku run rake db:migrate --app no-sprockets-rails:
           timeout: 400 # if your deploys take a long time
