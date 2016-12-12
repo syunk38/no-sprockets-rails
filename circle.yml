@@ -14,6 +14,9 @@ dependencies:
   override:
     - rm Gemfile.lock
     - bundle install --path vendor/bundle
+    - npm install
+    - npm rebuild node-sass
+    - npm run build
 
 test:
   override:
@@ -28,9 +31,6 @@ deployment:
     branch: master
     commands:
       - "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
-      - npm install
-      - npm rebuild node-sass
-      - npm run build
       - git config --global user.email $HEROKU_EMAIL
       - git config --global user.name $HEROKU_USER_NAME
       - git add public/.
